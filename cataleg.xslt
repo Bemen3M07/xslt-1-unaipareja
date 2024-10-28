@@ -7,17 +7,32 @@
   <table border="1">
     <tr bgcolor="violet">
       <th style="text-align:left">Title</th>
-      <th style="text-align:left">Artist</th>
+      <th style="text-align:left">Artistas</th>
       <th style="text-align:left">Precio</th>
-      
+      <th style="text-align:left"></th>
     </tr>
-    <xsl:for-each select="catalog/cd[price &lt; 10 ]">
+
+    <xsl:for-each select="catalog/cd">
+
     <tr>
+
       <td><xsl:value-of select="title"/></td>
       <td><xsl:value-of select="artist"/></td>
       <td><xsl:value-of select="price"/></td>
+      <td>
+    <xsl:choose>
+        <xsl:when test="price &lt; 10">
+        <span>&#128994;</span>
+      </xsl:when>
+
+      <xsl:otherwise>
+      <span>&#128308;</span>
+      </xsl:otherwise>
+    </xsl:choose>
+    </td>
 
     </tr>
+
     </xsl:for-each>
   </table>
 </body>
